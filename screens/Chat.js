@@ -5,7 +5,7 @@ import React, {
     useCallback
 } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-// @params GiftedChat component allows us to display chat messages that are going to be sent by different users
+/** @params GiftedChat component allows us to display chat messages that are going to be sent by different users */ 
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
     collection,
@@ -16,9 +16,10 @@ import {
     QuerySnapshot
 } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
-
 import { auth, database } from '../config/firebase';
 
+// This is to disable a warning that will repeat many times while developing. Current research says 
+// it's best to ignore the warning as there is no work-around
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -32,6 +33,9 @@ export default function Chat({ navigation }) {
         signOut(auth).catch(error => console.log('Error logging out: ', error));
     };
 
+    /**
+     * useLayoutEffect() - signature is identical to useEffect, but it fires synchronously after all DOM mutations. 
+     */
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -66,7 +70,7 @@ export default function Chat({ navigation }) {
         });
 
         return unsubscribe;
-    });
+    }, []); // add in an empty array? would be bug
 
     /**
      * Lines 71 -> will send a message. 

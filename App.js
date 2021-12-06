@@ -9,6 +9,13 @@
 
 import React, { useState, createContext, useContext, useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
+/**
+ * React Navigation allows for routing and navigation for Expo and React Native Apps.
+ * @param NavigationContainer - manages app state and links the top level navigator to the app environment
+ *        The container takes care of platform specific integration and provides functionality for:
+ *        deep link integration (linking prop), Notifying state changes for screen tracking, state, persistence, etc,
+ *        Handle system back button on android (BackHandler)
+ */
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -19,7 +26,7 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Chat from './screens/Chat';
 
-const Stack= createStackNavigator();
+const Stack = createStackNavigator();
 
 function ChatStack() {
   return (
@@ -85,7 +92,10 @@ function RootNavigator() {
     </NavigationContainer>
   );
 }
-
+/**
+ * The default Render. Once the User is authenticated it:
+ * @returns <RootNavigator />
+ */
 export default function App() {
   return (
   <AuthenticatedUserProvider>
