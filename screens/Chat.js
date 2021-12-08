@@ -68,9 +68,9 @@ export default function Chat({ navigation }) {
                 }))
             );
         });
-
+        
         return unsubscribe;
-    }, []); // add in an empty array? would be bug
+    }, []); // empty array or an array with props that the effect requires
 
     /**
      * Lines 71 -> will send a message. 
@@ -87,8 +87,9 @@ export default function Chat({ navigation }) {
                 user
             });
     }, []);
-
+    console.log(messages);
     return (
+        
         <GiftedChat
         messages={messages}
         showAvatarForEveryMessage={true}
