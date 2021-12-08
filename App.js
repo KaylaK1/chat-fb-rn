@@ -19,12 +19,25 @@ import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './config/firebase';
+import { auth, database } from './config/firebase';
 
 
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Chat from './screens/Chat';
+
+
+//playing around 
+import {
+  collection,
+  setDoc,
+  addDoc,
+  orderBy,
+  query,
+  onSnapshot,
+  QuerySnapshot,
+  doc
+} from 'firebase/firestore';
 
 const Stack = createStackNavigator();
 
@@ -64,6 +77,7 @@ function RootNavigator() {
   const { user, setUser } = useContext(AuthenticatedUserContext);
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     // onAuthStateChanged returns an unsubscriber
     const unsubscribeAuth = onAuthStateChanged(
@@ -77,6 +91,29 @@ function RootNavigator() {
     // unsubscribe auth listener on unmount
     return unsubscribeAuth;
   }, [user]);
+
+  let user1 = "test@site.com";
+  let user2 = "testy@gmail.com";
+
+  let roomName = 'chat_' + (user1 < user2 ? user1 +'_'+ user2 : user2 +'_'+ user1);
+
+  console.log('First way');
+  console.log(user1+', '+user2+' => '+ roomName);
+
+  user1 = "testy@gmail.com";
+  user2 = "test@site.com";
+
+  roomName = 'chat_'+(user1<user2 ? user1+'_'+user2 : user2+'_'+user1);
+  console.log("usernames switched");
+  console.log(user1+', '+user2+' => '+ roomName);
+
+  // create a list of chat rooms for each user
+  setDoc(doc(database, "userChatrooms", `${user1}`), {
+    [`${user2}`]: true
+  });
+  setDoc(doc(database, "userChatrooms", `${user2}`), {
+    [`${user1}`]: true
+  });
 
   if(isLoading) {
     return (

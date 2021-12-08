@@ -72,6 +72,10 @@ export default function Chat({ navigation }) {
         return unsubscribe;
     }, []); // empty array or an array with props that the effect requires
 
+    let user1 = "test@site.com";
+    let user2 = "testy@gmail.com";
+  
+    let roomName = 'chat_' + (user1 < user2 ? user1 +'_'+ user2 : user2 +'_'+ user1);
     /**
      * Lines 71 -> will send a message. 
      */
@@ -80,7 +84,8 @@ export default function Chat({ navigation }) {
             GiftedChat.append(previousMessages, messages)
             );
             const { _id, createdAt, text, user } = messages[0];
-            addDoc(collection(database, 'chats'), {
+           // addDoc(collection(database, 'individualChats'), {
+            setDoc(doc(database, "individualChats", `${roomName}`)), {
                 _id,
                 createdAt,
                 text,
