@@ -1,6 +1,6 @@
 # Chat App with Firebase and React Native
 
-This is from a tutorial at: https://blog.jscrambler.com/build-a-chat-app-with-firebase-and-react-native
+This is based on a tutorial: https://blog.jscrambler.com/build-a-chat-app-with-firebase-and-react-native
 
 Note: the tutorial and codebase uses useLayoutEffect. Although it seems Gifted Chat may only utilize useEffect. I am still learning and reading on the differences.
 
