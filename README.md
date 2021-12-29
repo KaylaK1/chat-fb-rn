@@ -1,8 +1,7 @@
 # Chat App with Firebase and React Native
 
-This is based on a tutorial: https://blog.jscrambler.com/build-a-chat-app-with-firebase-and-react-native
+This chat app uses react native and firebase to create a global chat between users. It has login and signup functionality. A branch exists on this repo that allows for individual chats between two users. 
 
-Note: the tutorial and codebase uses useLayoutEffect. Although it seems Gifted Chat may only utilize useEffect. I am still learning and reading on the differences.
 
 The chat is a component written in typescript: https://github.com/FaridSafi/react-native-gifted-chat
 
@@ -61,6 +60,8 @@ Finally onSend constructs a proper message object of the message the local user 
 Hold my box of wine. 
 
 ## Sources
+https://blog.jscrambler.com/build-a-chat-app-with-firebase-and-react-native
+
 https://reactjs.org/docs/hooks-reference.html
 
 https://github.com/FaridSafi/react-native-gifted-chat
