@@ -57,7 +57,11 @@ Finally onSend constructs a proper message object of the message the local user 
 
 
 ## User to User Chat
-Hold my box of wine. 
+The individualChats branch has a working user-user chat setup. Lines 75 through 78 contain the test data. 
+The roomName is creating by sorting two unique users id's then concacting them.
+
+If you have another screen that queries a database that contains a list of users who have matched each other. 
+You can output a list containing the matched users information along with a link to this individual chat screen which sends both users' ids as props.
 
 ## Sources
 https://blog.jscrambler.com/build-a-chat-app-with-firebase-and-react-native
